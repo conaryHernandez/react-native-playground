@@ -33,12 +33,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   headerAndroid: {
-    backgroundColor: 'white',
+    backgroundColor: '#ccc',
     borderBottomColor: 'transparent',
     borderBottomWidth: 0,
   },
   title: {
-    color: Platform.OS === 'ios' ? Colors.primary : 'white',
+    color: Platform.OS === 'ios' ? Colors.primary : 'black',
   },
 });
 
