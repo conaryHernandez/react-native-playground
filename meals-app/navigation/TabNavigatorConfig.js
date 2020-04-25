@@ -2,8 +2,8 @@ import React from 'react';
 import { Platform, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { FavoritesNavigator } from './FavoritesNavigator';
-import { MealsNavigator } from './MealsNavigator';
+import FavoritesNavigator from './FavoritesNavigator';
+import MealsNavigator from './MealsNavigator';
 
 import Colors from '../constants/Colors';
 

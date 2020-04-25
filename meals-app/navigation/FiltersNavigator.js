@@ -3,7 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import FiltersScreen from '../screens/FiltersScreen';
 import { defaultStackNavOptions } from './defaultNavOptions';
 
-export const FiltersNavigator = createStackNavigator(
+const FiltersNavigator = createStackNavigator(
   {
     Filters: FiltersScreen,
   },
@@ -12,3 +12,5 @@ export const FiltersNavigator = createStackNavigator(
     defaultNavigationOptions: defaultStackNavOptions,
   }
 );
+
+export default FiltersNavigator;

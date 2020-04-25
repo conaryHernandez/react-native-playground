@@ -5,7 +5,7 @@ import { tabScreenConfig } from './TabNavigatorConfig';
 
 import Colors from '../constants/Colors';
 
-export const TabsNavigator =
+const TabsNavigator =
   Platform.OS === 'android'
     ? createMaterialBottomTabNavigator(tabScreenConfig, {
         activeColor: 'white',
@@ -22,3 +22,5 @@ export const TabsNavigator =
           activeTintColor: Colors.accentColor,
         },
       });
+
+export default TabsNavigator;

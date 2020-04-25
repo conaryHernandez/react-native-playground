@@ -1,8 +1,8 @@
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
-import { TabsNavigator } from './TabsNavigator';
-import { FiltersNavigator } from './FiltersNavigator';
+import TabsNavigator from './TabsNavigator';
+import FiltersNavigator from './FiltersNavigator';
 
 import Colors from '../constants/Colors';
 

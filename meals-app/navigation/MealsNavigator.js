@@ -5,7 +5,7 @@ import CategoryMealsScreen from '../screens/CategoryMealsScreen';
 import MealDetailScreen from '../screens/MealDetailsScreen';
 import { defaultStackNavOptions } from './defaultNavOptions';
 
-export const MealsNavigator = createStackNavigator(
+const MealsNavigator = createStackNavigator(
   {
     Categories: {
       screen: CategoriesScreen,
@@ -17,3 +17,5 @@ export const MealsNavigator = createStackNavigator(
   },
   { defaultStackNavOptions: defaultStackNavOptions }
 );
+
+export default MealsNavigator;
