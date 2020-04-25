@@ -15,7 +15,7 @@ const MealsNavigator = createStackNavigator(
     },
     MealDetail: MealDetailScreen,
   },
-  { defaultStackNavOptions: defaultStackNavOptions }
+  { defaultNavigationOptions: defaultStackNavOptions }
 );
 
 export default MealsNavigator;
