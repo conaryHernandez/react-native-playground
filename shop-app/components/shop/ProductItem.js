@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Colors from '../../constants/Colors';
 
-const ProductItem = ({ title, price, imageUrl, onViewDetail, onAddCart }) => {
+const ProductItem = ({ title, price, image, onViewDetail, onAddCart }) => {
   let TouchableComponent = TouchableOpacity;
 
   if (Platform.OS === 'android' && Platform.Version >= 21) {
@@ -24,11 +24,11 @@ const ProductItem = ({ title, price, imageUrl, onViewDetail, onAddCart }) => {
         <TouchableComponent onPress={onViewDetail} useForeground>
           <View>
             <View style={styles.imageContainer}>
-              <Image style={styles.image} source={{ uri: imageUrl }} />
+              <Image style={styles.image} source={{ uri: image }} />
             </View>
             <View style={styles.detail}>
               <Text style={styles.title}>{title}</Text>
-              <Text style={styles.price}>{price.toFixed(2)}</Text>
+              <Text style={styles.price}>${price.toFixed(2)}</Text>
             </View>
             <View style={styles.actions}>
               <Button
@@ -82,10 +82,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
+    fontFamily: 'open-sans-bold',
     fontSize: 18,
-    marginVertical: 4,
+    marginVertical: 2,
   },
   price: {
+    fontFamily: 'open-sans',
     fontSize: 14,
     color: '#888',
   },

@@ -41,9 +41,10 @@ const styles = StyleSheet.create({
   },
   actions: {
     marginVertical: 10,
-    alignContent: 'center',
+    alignItems: 'center',
   },
   price: {
+    fontFamily: 'open-sans-bold',
     fontSize: 20,
     color: '#888',
     textAlign: 'center',
