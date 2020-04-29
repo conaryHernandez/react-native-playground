@@ -9,10 +9,10 @@ import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
 import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
-import UserProducts from '../screens/user/UserProducts';
+import UserProductsScreen from '../screens/user/UserProducts';
+import EditProductsScreen from '../screens/user/EditProducts';
 
 import Colors from '../constants/Colors';
-import UserProductsScreen from '../screens/user/UserProducts';
 
 const defaultNavigationOptions = {
   headerStyle: {
@@ -68,6 +68,7 @@ const OrdersNavigator = createStackNavigator(
 const AdminNavigator = createStackNavigator(
   {
     UserProducts: UserProductsScreen,
+    EditProduct: EditProductsScreen,
   },
   {
     navigationOptions: {

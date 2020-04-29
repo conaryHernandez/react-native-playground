@@ -14,8 +14,8 @@ const ProductsOverviewScreen = ({ navigation }) => {
 
   const selectItemHandler = (id, title) => {
     navigation.navigate('ProductDetails', {
-      productId: itemData.item.id,
-      productTitle: itemData.item.title,
+      productId: id,
+      productTitle: title,
     });
   };
 
