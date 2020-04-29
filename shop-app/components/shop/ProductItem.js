@@ -11,7 +11,14 @@ import {
 } from 'react-native';
 import Colors from '../../constants/Colors';
 
-const ProductItem = ({ title, price, image, onViewDetail, onAddCart }) => {
+const ProductItem = ({
+  title,
+  price,
+  image,
+  onSelect,
+  onAddCart,
+  children,
+}) => {
   let TouchableComponent = TouchableOpacity;
 
   if (Platform.OS === 'android' && Platform.Version >= 21) {
@@ -21,7 +28,7 @@ const ProductItem = ({ title, price, image, onViewDetail, onAddCart }) => {
   return (
     <View style={styles.product}>
       <View style={styles.touchable}>
-        <TouchableComponent onPress={onViewDetail} useForeground>
+        <TouchableComponent onPress={onSelect} useForeground>
           <View>
             <View style={styles.imageContainer}>
               <Image style={styles.image} source={{ uri: image }} />
@@ -30,18 +37,7 @@ const ProductItem = ({ title, price, image, onViewDetail, onAddCart }) => {
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.price}>${price.toFixed(2)}</Text>
             </View>
-            <View style={styles.actions}>
-              <Button
-                color={Colors.primary}
-                title="View Details"
-                onPress={onViewDetail}
-              />
-              <Button
-                color={Colors.primary}
-                title="To Cart"
-                onPress={onAddCart}
-              />
-            </View>
+            <View style={styles.actions}>{children}</View>
           </View>
         </TouchableComponent>
       </View>
