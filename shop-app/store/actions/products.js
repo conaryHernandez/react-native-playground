@@ -6,7 +6,9 @@ export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const SET_PRODUCTS = 'SET_PRODUCTS';
 
 export const fetchProducts = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const userId = getState().auth.userId;
+
     try {
       const response = await fetch(
         'https://react-native-shop-ef4f7.firebaseio.com/products.json'
@@ -23,7 +25,7 @@ export const fetchProducts = () => {
         loadedProducts.push(
           new Product(
             key,
-            'u1',
+            resData[key].ownerId,
             resData[key].title,
             resData[key].imageUrl,
             resData[key].description,
@@ -32,7 +34,11 @@ export const fetchProducts = () => {
         );
       }
 
-      dispatch({ type: SET_PRODUCTS, products: loadedProducts });
+      dispatch({
+        type: SET_PRODUCTS,
+        products: loadedProducts,
+        userProducts: loadedProducts.filter((prod) => prod.id === userId),
+      });
     } catch (err) {
       console.log(err);
       throw err;
@@ -66,6 +72,7 @@ export const deleteProduct = (productId) => {
 export const createProduct = (title, description, imageUrl, price) => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
+    const userId = getState().auth.userId;
 
     try {
       const response = await fetch(
@@ -80,6 +87,7 @@ export const createProduct = (title, description, imageUrl, price) => {
             description,
             imageUrl,
             price,
+            ownerId: userId,
           }),
         }
       );
@@ -94,6 +102,7 @@ export const createProduct = (title, description, imageUrl, price) => {
           description,
           imageUrl,
           price,
+          ownerId: userId,
         },
       });
     } catch (err) {
