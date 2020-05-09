@@ -1,21 +1,28 @@
 import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useDispatch } from 'react-redux';
-
 import { Platform, SafeAreaView, Button, View } from 'react-native';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import {
-  createDrawerNavigator,
-  DrawerNavigatorItems,
-} from 'react-navigation-drawer';
 import { Ionicons } from '@expo/vector-icons';
 
-import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
-import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen';
-import CartScreen from '../screens/shop/CartScreen';
-import OrdersScreen from '../screens/shop/OrdersScreen';
-import UserProductsScreen from '../screens/user/UserProducts';
-import EditProductsScreen from '../screens/user/EditProducts';
+import ProductsOverviewScreen, {
+  screenOptions as productsOverviewScreenOptions,
+} from '../screens/shop/ProductsOverviewScreen';
+import ProductDetailsScreen, {
+  screenOptions as productDetailScreenOptions,
+} from '../screens/shop/ProductDetailsScreen';
+import CartScreen, {
+  screenOptions as cartScreenOptions,
+} from '../screens/shop/CartScreen';
+import OrdersScreen, {
+  screenOptions as ordersScreenOptions,
+} from '../screens/shop/OrdersScreen';
+import UserProductsScreen, {
+  screenOptions as userProductsScreenOptions,
+} from '../screens/user/UserProducts';
+import EditProductsScreen, {
+  screenOptions as editProductsScreenOptions,
+} from '../screens/user/EditProducts';
 import AuthScreen from '../screens/user/AuthScreen';
 import StartupScreen from '../screens/StartupScreen';
 
@@ -35,6 +42,31 @@ const defaultNavigationOptions = {
   headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary,
 };
 
+const ProductsStackNavigator = createStackNavigator();
+
+export const ProductsNavigator = () => {
+  return (
+    <ProductsStackNavigator.Navigator screenOptions={defaultNavigationOptions}>
+      <ProductsStackNavigator.Screen
+        name="ProductsOverview"
+        component={ProductsOverviewScreen}
+        options={productsOverviewScreenOptions}
+      />
+      <ProductsStackNavigator.Screen
+        name="ProductDetails"
+        component={ProductDetailsScreen}
+        options={productDetailScreenOptions}
+      />
+      <ProductsStackNavigator.Screen
+        name="Cart"
+        component={CartScreen}
+        options={cartScreenOptions}
+      />
+    </ProductsStackNavigator.Navigator>
+  );
+};
+
+/*
 const ProductsNavigator = createStackNavigator(
   {
     ProductsOverview: ProductsOverviewScreen,
@@ -53,8 +85,23 @@ const ProductsNavigator = createStackNavigator(
     },
     defaultNavigationOptions,
   }
-);
+);*/
 
+const OrdersStackNavigator = createStackNavigator();
+
+export const OrdersNavigator = () => {
+  return (
+    <OrdersStackNavigator.Navigator>
+      <OrdersStackNavigator.Screen
+        name="Orders"
+        component={OrdersScreen}
+        options={ordersScreenOptions}
+      />
+    </OrdersStackNavigator.Navigator>
+  );
+};
+
+/*
 const OrdersNavigator = createStackNavigator(
   {
     Orders: OrdersScreen,
@@ -71,8 +118,28 @@ const OrdersNavigator = createStackNavigator(
     },
     defaultNavigationOptions,
   }
-);
+); */
 
+const AdminStackNavigator = createStackNavigator();
+
+export const AdminNavigator = () => {
+  return (
+    <AdminStackNavigator.Navigator>
+      <AdminStackNavigator.Screen
+        name="UserProducts"
+        component={UserProductsScreen}
+        options={userProductsScreenOptions}
+      />
+      <AdminStackNavigator.Screen
+        name="EditProduct"
+        component={EditProductsScreen}
+        options={editProductsScreenOptions}
+      />
+    </AdminStackNavigator.Navigator>
+  );
+};
+
+/*
 const AdminNavigator = createStackNavigator(
   {
     UserProducts: UserProductsScreen,
@@ -138,4 +205,6 @@ const MainNavigator = createSwitchNavigator({
   Shop: ShopNavigator,
 });
 
+
 export default createAppContainer(MainNavigator);
+*/
