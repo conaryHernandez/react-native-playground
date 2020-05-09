@@ -75,7 +75,7 @@ const OrdersStackNavigator = createStackNavigator();
 
 export const OrdersNavigator = () => {
   return (
-    <OrdersStackNavigator.Navigator>
+    <OrdersStackNavigator.Navigator screenOptions={defaultNavigationOptions}>
       <OrdersStackNavigator.Screen
         name="Orders"
         component={OrdersScreen}
@@ -121,7 +121,7 @@ export const ShopNavigator = () => {
                 color={Colors.primary}
                 onPress={() => {
                   dispatch(authActions.logout());
-                  props.navigation.navigate('Auth');
+                  // props.navigation.navigate('Auth');
                 }}
               />
             </SafeAreaView>
@@ -179,7 +179,7 @@ const AuthStackNavigator = createStackNavigator();
 
 export const AuthNavigator = () => {
   return (
-    <AuthStackNavigator.Navigator>
+    <AuthStackNavigator.Navigator screenOptions={defaultNavigationOptions}>
       <AuthStackNavigator.Screen
         name="auth"
         component={AuthScreen}

@@ -52,10 +52,10 @@ const ProductsOverviewScreen = ({ navigation }) => {
   }, [dispatch, setIsLoading, setError]);
 
   useEffect(() => {
-    const willFocusSub = navigation.addListener('willFocus', loadProducts);
+    const unsubscribe = navigation.addListener('focus', loadProducts);
 
     return () => {
-      willFocusSub.remove();
+      unsubscribe();
     };
   }, [loadProducts]);
 
