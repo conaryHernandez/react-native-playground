@@ -61,9 +61,26 @@ export default function App() {
     );
   };
 
+  const renderNoMoreCards = () => {
+    return (
+      <Card title="All Done">
+        <Text>No more content!</Text>
+
+        <Button
+          title="Get More!"
+          buttonStyle={{ backgroundColor: '#03a9f4' }}
+        />
+      </Card>
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <Deck data={DATA} renderCard={renderCard} />
+      <Deck
+        data={DATA}
+        renderCard={renderCard}
+        renderNoMoreCards={renderNoMoreCards}
+      />
     </View>
   );
 }
