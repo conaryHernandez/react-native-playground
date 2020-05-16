@@ -50,7 +50,7 @@ const DATA = [
 export default function App() {
   const renderCard = (item) => {
     return (
-      <Card key={item.text} title={item.text} image={{ uri: item.uri }}>
+      <Card title={item.text} image={{ uri: item.uri }} key={item.id}>
         <Text style={{ marginBottom: 10 }}>Customize</Text>
         <Button
           icon={{ name: 'code' }}
