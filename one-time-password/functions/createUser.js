@@ -15,6 +15,8 @@ const createUser = async (req, res) => {
   } catch (error) {
     res.status(422).send({ error });
   }
+
+  return null;
 };
 
 module.exports = createUser;
