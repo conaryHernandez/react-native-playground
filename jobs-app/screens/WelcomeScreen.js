@@ -5,6 +5,13 @@ const WelcomeScreen = () => {
   return (
     <View>
       <Text>The WelcomeScreen</Text>
+      <Text>The WelcomeScreen</Text>
+      <Text>The WelcomeScreen</Text>
+      <Text>The WelcomeScreen</Text>
+      <Text>The WelcomeScreen</Text>
+      <Text>The WelcomeScreen</Text>
+      <Text>The WelcomeScreen</Text>
+      <Text>The WelcomeScreen</Text>
     </View>
   );
 };
