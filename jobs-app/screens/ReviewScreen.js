@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { Button } from 'react-native-elements';
 
 const ReviewScreen = () => {
   return (
@@ -7,6 +8,18 @@ const ReviewScreen = () => {
       <Text>The ReviewScreen</Text>
     </View>
   );
+};
+
+ReviewScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: 'Review Jobs',
+    headerRight: () => (
+      <Button
+        title="Settings"
+        onPress={() => navData.navigation.navigate('Settings')}
+      />
+    ),
+  };
 };
 
 export default ReviewScreen;

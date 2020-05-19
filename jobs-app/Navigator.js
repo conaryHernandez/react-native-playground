@@ -1,4 +1,3 @@
-import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -17,7 +16,12 @@ const ReviewNavigator = createStackNavigator({
 const MainTabNavigator = createBottomTabNavigator({
   Map: MapScreen,
   Deck: DeckScreen,
-  Review: ReviewNavigator,
+  Review: {
+    screen: ReviewNavigator,
+    navigationOptions: {
+      tabBarLabel: 'Review Jobs',
+    },
+  },
 });
 
 const MainNavigator = createBottomTabNavigator({
