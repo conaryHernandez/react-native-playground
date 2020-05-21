@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const Slides = ({ data }) => {
+const Slides = ({ data, onComplete }) => {
   const renderSlides = () => {
     return data.map((slide, index) => (
       <View
@@ -19,12 +19,24 @@ const Slides = ({ data }) => {
 
   const renderLastSlide = (index) => {
     if (index === data.length - 1) {
-      return <Button title="Onwards!" raised />;
+      return (
+        <Button
+          title="Onwards"
+          buttonStyle={{ backgroundColor: '#0288D1' }}
+          containerStyle={{ marginTop: 15 }}
+          raised
+          onPress={onComplete}
+        />
+      );
     }
   };
 
   return (
-    <ScrollView horizontal pagingEnabled>
+    <ScrollView
+      horizontal
+      pagingEnabled
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
       {renderSlides()}
     </ScrollView>
   );

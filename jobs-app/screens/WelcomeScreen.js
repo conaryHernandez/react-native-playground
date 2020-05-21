@@ -11,10 +11,14 @@ const SLIDE_DATA = [
   { text: 'Set your location, then swipe away', color: '#03A9F4' },
 ];
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
+  onSlideComplete = () => {
+    navigation.navigate('Auth');
+  };
+
   return (
     <View>
-      <Slides data={SLIDE_DATA} />
+      <Slides data={SLIDE_DATA} onComplete={onSlideComplete} />
     </View>
   );
 };
