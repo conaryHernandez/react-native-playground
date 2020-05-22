@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 import * as Facebook from 'expo-facebook';
 import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL } from './types';
 import keys from '../../keys';
@@ -13,7 +13,13 @@ const doFacebookLogin = async (dispatch) => {
     }
   );
 
-  if (type === 'cancel') {
+  if (type === 'success') {
+    // Get the user's name using Facebook's Graph API
+    const response = await fetch(
+      `https://graph.facebook.com/me?access_token=${token}`
+    );
+    Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+  } else {
     return dispatch({
       type: FACEBOOK_LOGIN_FAIL,
     });
