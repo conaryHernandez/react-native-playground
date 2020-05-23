@@ -25,7 +25,7 @@ const MainTabNavigator = createBottomTabNavigator({
 });
 
 const MainNavigator = createBottomTabNavigator({
-  Welcome: WelcomeScreen,
+  Map: MapScreen,
   Auth: AuthScreen,
   Main: {
     screen: MainTabNavigator,

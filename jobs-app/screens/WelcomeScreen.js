@@ -1,5 +1,9 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Alert, AsyncStorage } from 'react-native';
+import { AppLoading } from 'expo';
+
+import _ from 'lodash';
+
 import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
@@ -12,9 +16,30 @@ const SLIDE_DATA = [
 ];
 
 const WelcomeScreen = ({ navigation }) => {
+  const [token, setToken] = useState('');
+
   onSlideComplete = () => {
     navigation.navigate('Auth');
   };
+
+  onGetToken = async () => {
+    const token = await AsyncStorage.getItem('fb_token');
+
+    if (token) {
+      navigation.navigate('Map');
+      setToken(token);
+    } else {
+      setToken('');
+    }
+  };
+
+  useEffect(() => {
+    onGetToken();
+  }, [onGetToken]);
+
+  if (_.isEmpty(token)) {
+    return <AppLoading />;
+  }
 
   return (
     <View>
