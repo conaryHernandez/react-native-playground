@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import MapView from 'react-native-maps';
 import { View, StyleSheet, Dimensions, ActivityIndicator } from 'react-native';
-import { Button } from 'react-native-elements';
 
 import * as actions from '../store/actions';
 

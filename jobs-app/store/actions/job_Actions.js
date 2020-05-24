@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { Alert } from 'react-native';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { API_KEY } from '../../keys';
@@ -6,9 +6,11 @@ import { API_KEY } from '../../keys';
 import { FETCH_JOBS } from './types';
 
 import * as JOB_DATA from '../../data/IndeedJobData.json'; // Dummy data
-import { Alert } from 'react-native';
+console.log('uh?');
 
 export const fetchJobs = (region, cb) => {
+  console.log('uh?');
+
   return async (dispatch) => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
 
@@ -24,7 +26,6 @@ export const fetchJobs = (region, cb) => {
 
         // FETCH CALL TO API const { data } = await axios.get('../../data/IndeedJobData.json');
 
-        console.log('uh?');
         console.log('JOB_DATA', JSON.parse(JOB_DATA));
 
         dispatch({
