@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import MapView from 'react-native-maps';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  ActivityIndicator,
-} from 'react-native';
+import { View, StyleSheet, Dimensions, ActivityIndicator } from 'react-native';
+import { Button } from 'react-native-elements';
 
-const MapScreen = () => {
+import * as actions from '../store/actions';
+
+const MapScreen = ({ navigation }) => {
   const [region, setRegion] = useState({
     longitude: -122,
     latitude: 37,
@@ -16,9 +14,16 @@ const MapScreen = () => {
     latitudeDelta: 0.09,
   });
   const [mapLoaded, setMapLoaded] = useState(false);
+  const dispatch = useDispatch();
 
   const onRegionChangeComplete = (region) => {
     setRegion(region);
+  };
+
+  const onButtonPress = () => {
+    dispatch(actions.fetchJobs(region), () => {
+      navigation.navigate('Deck');
+    });
   };
 
   useEffect(() => {
@@ -35,12 +40,21 @@ const MapScreen = () => {
 
   return (
     <View>
-      <Text>The MapScreen</Text>
       <MapView
         style={styles.mapStyle}
         region={region}
         onRegionChangeComplete={onRegionChangeComplete}
       />
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Search this Area"
+          buttonStyle={{
+            backgroundColor: '#009688',
+          }}
+          icon={{ name: 'search' }}
+          onPress={onButtonPress}
+        />
+      </View>
     </View>
   );
 };
@@ -49,6 +63,12 @@ const styles = StyleSheet.create({
   mapStyle: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 50,
+    left: 0,
+    right: 0,
   },
 });
 
