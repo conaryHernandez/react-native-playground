@@ -8,7 +8,7 @@ import Swipe from '../components/Swipe';
 
 import * as actions from '../store/actions';
 
-const DeckScreen = () => {
+const DeckScreen = ({ navigation }) => {
   const jobs = useSelector((state) => state.jobs.results);
 
   const renderCard = (job) => {
@@ -39,13 +39,23 @@ const DeckScreen = () => {
   };
 
   const renderNoMoreCards = () => {
-    return <Card title="No More Jobs" />;
+    return (
+      <Card title="No More Jobs">
+        <Button
+          title="Back To Map"
+          large
+          icon={{ name: 'my-location' }}
+          buttonStyle={{ backgroundColor: '#03A9F4' }}
+          onPress={() => navigation.navigate('Map')}
+        />
+      </Card>
+    );
   };
 
   return (
     <View style={{ marginTop: 10 }}>
       <Swipe
-        data={jobs}
+        data={jobs.results}
         renderCard={renderCard}
         renderNoMoreCards={renderNoMoreCards}
         keyProp="jobkey"

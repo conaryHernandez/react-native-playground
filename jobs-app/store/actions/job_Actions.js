@@ -3,13 +3,19 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { API_KEY } from '../../keys';
 
-import { FETCH_JOBS, LIKE_JOB } from './types';
+import { FETCH_JOBS, LIKE_JOB, CLEAR_LIKED_JOBS } from './types';
 
-import JOB_DATA from '../../data/IndeedJobData.json'; // Dummy data
+import JOB_DATA from '../../data/IndeedJobData'; // Dummy data
 
 export const fetchJobs = (region, cb) => {
   return async (dispatch) => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    const fakeRegion = {
+      longitude: 0.02,
+      latitude: 0.05,
+      latitudeDelta: 0.045,
+      longitudeDelta: 0.02,
+    };
 
     if (status === 'granted') {
       const { latitude, longitude } = region;
@@ -25,7 +31,7 @@ export const fetchJobs = (region, cb) => {
 
         dispatch({
           type: FETCH_JOBS,
-          payload: JOB_DATA,
+          payload: JOB_DATA(fakeRegion),
         });
         cb();
       } catch (error) {
@@ -41,5 +47,11 @@ export const likeJob = (job) => {
   return {
     type: LIKE_JOB,
     payload: job,
+  };
+};
+
+export const clearLikedJobs = () => {
+  return {
+    type: CLEAR_LIKED_JOBS,
   };
 };
