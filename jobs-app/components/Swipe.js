@@ -86,6 +86,8 @@ const Swipe = ({
       return renderNoMoreCards();
     }
 
+    console.log('data', data);
+
     const deck = data.map((item, cardIndex) => {
       if (cardIndex < deckIndex) {
         return null;
@@ -123,7 +125,7 @@ const Swipe = ({
   );
 };
 
-Deck.defaultProps = {
+Swipe.defaultProps = {
   onSwipeRight: () => {},
   onSwipeLeft: () => {},
   keyProp: 'id',

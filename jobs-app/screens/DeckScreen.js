@@ -10,14 +10,15 @@ import * as actions from '../store/actions';
 
 const DeckScreen = () => {
   const jobs = useSelector((state) => state.jobs.results);
-  const initialRegion = {
-    longitude: job.longitude,
-    latitude: job.latitude,
-    longitudeDelta: 0.045,
-    latitudeDelta: 0.02,
-  };
 
   const renderCard = (job) => {
+    const initialRegion = {
+      longitude: job.longitude,
+      latitude: job.latitude,
+      longitudeDelta: 0.045,
+      latitudeDelta: 0.02,
+    };
+
     return (
       <Card title={job.jobtitle}>
         <View style={{ height: 300 }}>

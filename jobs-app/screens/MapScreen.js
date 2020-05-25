@@ -20,10 +20,12 @@ const MapScreen = ({ navigation }) => {
     setRegion(region);
   };
 
+  const afterButtonPress = () => {
+    navigation.navigate('Deck');
+  };
+
   const onButtonPress = () => {
-    dispatch(actions.fetchJobs(region), () => {
-      navigation.navigate('Deck');
-    });
+    dispatch(actions.fetchJobs(region, afterButtonPress));
   };
 
   useEffect(() => {

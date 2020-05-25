@@ -5,7 +5,7 @@ import { API_KEY } from '../../keys';
 
 import { FETCH_JOBS, LIKE_JOB } from './types';
 
-import * as JOB_DATA from '../../data/IndeedJobData.json'; // Dummy data
+import JOB_DATA from '../../data/IndeedJobData.json'; // Dummy data
 
 export const fetchJobs = (region, cb) => {
   return async (dispatch) => {
@@ -23,11 +23,9 @@ export const fetchJobs = (region, cb) => {
 
         // FETCH CALL TO API const { data } = await axios.get('../../data/IndeedJobData.json');
 
-        console.log('JOB_DATA', JSON.parse(JOB_DATA));
-
         dispatch({
           type: FETCH_JOBS,
-          payload: JSON.parse(JOB_DATA),
+          payload: JOB_DATA,
         });
         cb();
       } catch (error) {
