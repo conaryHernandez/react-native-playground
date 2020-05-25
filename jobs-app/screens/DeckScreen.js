@@ -6,6 +6,8 @@ import { Card, Button } from 'react-native-elements';
 
 import Swipe from '../components/Swipe';
 
+import * as actions from '../store/actions';
+
 const DeckScreen = () => {
   const jobs = useSelector((state) => state.jobs.results);
   const initialRegion = {
@@ -46,6 +48,7 @@ const DeckScreen = () => {
         renderCard={renderCard}
         renderNoMoreCards={renderNoMoreCards}
         keyProp="jobkey"
+        onSwipeRight={(job) => useDispatch(actions.likeJob(job))}
       />
     </View>
   );

@@ -3,14 +3,11 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { API_KEY } from '../../keys';
 
-import { FETCH_JOBS } from './types';
+import { FETCH_JOBS, LIKE_JOB } from './types';
 
 import * as JOB_DATA from '../../data/IndeedJobData.json'; // Dummy data
-console.log('uh?');
 
 export const fetchJobs = (region, cb) => {
-  console.log('uh?');
-
   return async (dispatch) => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
 
@@ -39,5 +36,12 @@ export const fetchJobs = (region, cb) => {
     } else {
       Alert.alert('Permissions required');
     }
+  };
+};
+
+export const likeJob = (job) => {
+  return {
+    type: LIKE_JOB,
+    payload: job,
   };
 };
