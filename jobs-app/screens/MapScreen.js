@@ -61,6 +61,12 @@ const MapScreen = ({ navigation }) => {
   );
 };
 
+MapScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: 'Map',
+  };
+};
+
 const styles = StyleSheet.create({
   mapStyle: {
     width: Dimensions.get('window').width,

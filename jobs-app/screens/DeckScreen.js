@@ -65,6 +65,12 @@ const DeckScreen = ({ navigation }) => {
   );
 };
 
+DeckScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: 'Jobs',
+  };
+};
+
 const styles = StyleSheet.create({
   detailWrapper: {
     flexDirection: 'row',

@@ -1,5 +1,7 @@
+import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { Icon } from 'react-native-elements';
 import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
 import WelcomeScreen from './screens/WelcomeScreen';
 import AuthScreen from './screens/AuthScreen';
@@ -13,19 +15,47 @@ const ReviewNavigator = createStackNavigator({
   Settings: SettingsScreen,
 });
 
-const MainTabNavigator = createBottomTabNavigator({
-  Map: MapScreen,
-  Deck: DeckScreen,
-  Review: {
-    screen: ReviewNavigator,
-    navigationOptions: {
-      tabBarLabel: 'Review Jobs',
+const MainTabNavigator = createBottomTabNavigator(
+  {
+    Map: {
+      screen: MapScreen,
+      navigationOptions: {
+        tabBarIcon: (tabInfo) => {
+          return (
+            <Icon name="my-location" size={30} color={tabInfo.tintColor} />
+          );
+        },
+      },
+    },
+    Deck: {
+      screen: DeckScreen,
+      navigationOptions: {
+        tabBarIcon: (tabInfo) => {
+          return (
+            <Icon name="description" size={30} color={tabInfo.tintColor} />
+          );
+        },
+      },
+    },
+    Review: {
+      screen: ReviewNavigator,
+      navigationOptions: {
+        tabBarLabel: 'Review Jobs',
+        tabBarIcon: (tabInfo) => {
+          return <Icon name="favorite" size={30} color={tabInfo.tintColor} />;
+        },
+      },
     },
   },
-});
+  {
+    tabBarOptions: {
+      labelStyle: { fontSize: 12 },
+    },
+  }
+);
 
 const MainNavigator = createBottomTabNavigator({
-  Welcome: MapScreen,
+  Map: MainTabNavigator,
   Auth: AuthScreen,
   Main: {
     screen: MainTabNavigator,
