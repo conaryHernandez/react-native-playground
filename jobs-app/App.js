@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import MainNavigator from './Navigator';
 
 import { Provider } from 'react-redux';
-import store from './store';
+import reduxsConfig from './store';
+
+const { store } = reduxsConfig();
 
 export default function App() {
   return (
